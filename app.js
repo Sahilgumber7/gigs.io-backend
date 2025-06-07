@@ -1,7 +1,9 @@
 import express from 'express';
 import cors from 'cors';
+
 import authRoutes from './routes/authRoutes.js';
 import gigRoutes from './routes/gigRoutes.js';
+import orderRoutes from './routes/orderRoutes.js'; // Optional if added
 
 const app = express();
 
@@ -12,8 +14,9 @@ app.use(express.json());
 // Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/gigs', gigRoutes);
+app.use('/api/orders', orderRoutes); // Enable if implemented
 
-// Default route
+// Root route
 app.get('/', (req, res) => {
   res.send('🎯 Freelance Marketplace API is running');
 });
