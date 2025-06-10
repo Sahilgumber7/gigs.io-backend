@@ -9,8 +9,7 @@ const app = express();
 
 // Middleware
 app.use(cors({
-  origin: '*', // to be replaced by frontend url in production
-  credentials: true                
+  origin: '*', // to be replaced by frontend url in production           
 }));
 app.use(express.json());
 
