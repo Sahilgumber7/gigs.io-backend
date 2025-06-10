@@ -9,9 +9,8 @@ const app = express();
 
 // Middleware
 app.use(cors({
-  origin: '*', // <-- Temporarily allow all origins
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
+  origin: 'http://localhost:3000', // to be replaced by frontend url in production
+  credentials: true                
 }));
 app.use(express.json());
 
