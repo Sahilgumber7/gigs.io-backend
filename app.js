@@ -9,9 +9,9 @@ const app = express();
 
 // Middleware
 app.use(cors({
-  origin: ['http://localhost:3000', 'https://gigs-io-frontend.vercel.app'], // your frontend URLs
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  credentials: true,
+  origin: '*', // <-- Temporarily allow all origins
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
 }));
 app.use(express.json());
 
