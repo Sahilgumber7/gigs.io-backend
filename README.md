@@ -26,15 +26,25 @@
 
 > All routes require a valid JWT in the `Authorization: Bearer <token>` header.
 
-| Method | Endpoint                     | Description                        | Body Parameters                                      |
-|--------|------------------------------|------------------------------------|-------------------------------------------------------|
-| POST   | `/api/orders`                | Create a new order from a gig      | `gig`, `deadline`, `requirements`                    |
-| GET    | `/api/orders`                | Get all orders for the user        | —                                                     |
-| PUT    | `/api/orders/:id/status`     | Update status of an order          | `status`: `pending`, `in-progress`, `completed`, `cancelled` |
+| Method | Endpoint                     | Description                        | Body Parameters                                                                 |
+|--------|------------------------------|------------------------------------|----------------------------------------------------------------------------------|
+| POST   | `/api/orders`                | Create a new order from a gig      | `gig`, `deadline`, `requirements`, `razorpayPaymentId`                          |
+| GET    | `/api/orders`                | Get all orders for the user        | —                                                                                |
+| PATCH  | `/api/orders/:id`            | Update status of an order          | `status`: `pending`, `in-progress`, `completed`, `cancelled`                    |
 
 ---
 
-> 🔒 All authenticated routes require a valid JWT token.
->  
-> 🌐 Base URL: `https://gigs-io-backend-4ulp6pwvc-sahilgumber7s-projects.vercel.app`
+## 👤 Users (Authenticated)
 
+> Some routes require authentication via `Authorization: Bearer <token>`
+
+| Method | Endpoint             | Description                      | Body Parameters                            |
+|--------|----------------------|----------------------------------|---------------------------------------------|
+| GET    | `/api/users/me`      | Get current user's profile       | —                                           |
+| PUT    | `/api/users/me`      | Update current user's profile    | `name`, `bio`, `skills`, `avatar` (optional)|
+| GET    | `/api/users/:id`     | Get public profile by user ID    | —                                           |
+
+---
+
+> 🔒 All authenticated routes require a valid JWT token.  
+> 🌐 **Base URL:** `https://gigs-io-backend-4ulp6pwvc-sahilgumber7s-projects.vercel.app`

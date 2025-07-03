@@ -5,6 +5,7 @@ const orderSchema = new mongoose.Schema({
   client: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
   freelancer: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true }, // from gig.createdBy
   deadline: { type: Date, required: true },
+  razorpayPaymentId: { type: String},
   requirements: { type: String },
   status: {
     type: String,

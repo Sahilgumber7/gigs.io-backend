@@ -3,17 +3,22 @@ import Gig from '../models/gig.js';
 
 export const createOrder = async (req, res) => {
   try {
-    const { gig: gigId, deadline, requirements } = req.body;
+    const { gig: gigId, deadline, requirements, razorpayPaymentId } = req.body;
+
+    if (!razorpayPaymentId) {
+      return res.status(400).json({ error: 'Missing Razorpay payment ID' });
+    }
 
     const gig = await Gig.findById(gigId);
     if (!gig) return res.status(404).json({ error: 'Gig not found' });
 
     const order = await Order.create({
       gig: gig._id,
-      client: req.user.userId, // from token
-      freelancer: gig.createdBy, // from the gig
+      client: req.user.userId,
+      freelancer: gig.createdBy,
       deadline,
       requirements,
+      razorpayPaymentId, // store it in DB
     });
 
     res.status(201).json(order);
@@ -21,6 +26,7 @@ export const createOrder = async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 };
+
 
 export const getUserOrders = async (req, res) => {
   try {

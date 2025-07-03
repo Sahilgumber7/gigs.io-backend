@@ -4,6 +4,7 @@ import cors from 'cors';
 import authRoutes from './routes/authRoutes.js';
 import gigRoutes from './routes/gigRoutes.js';
 import orderRoutes from './routes/orderRoutes.js'; 
+import userRoutes from './routes/userRoutes.js';
 
 const app = express();
 
@@ -18,6 +19,7 @@ app.use(express.json());
 app.use('/api/auth', authRoutes);
 app.use('/api/gigs', gigRoutes);
 app.use('/api/orders', orderRoutes); 
+app.use('/api/users', userRoutes);
 
 // Root route
 app.get('/', (req, res) => {
